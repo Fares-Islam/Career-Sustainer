@@ -1,11 +1,12 @@
-import NavigationBar from "../Components/navigationBar";
-import JobsPage from "../Components/jobsPage";
+import { useJobs } from '../hooks/useJobs';
+import { JobList } from '../components/JobList';
 
-export default function Jobs() {
-  return (
-    <>
-      <NavigationBar />
-      <JobsPage/>
-    </>
-  );
-}
+export const JobsPage: React.FC = () => {
+  const { jobs, isLoading } = useJobs();
+  
+  if (isLoading) {
+    return <div className="text-center py-16">Loading jobs...</div>;
+  }
+  
+  return <JobList jobs={jobs} />;
+};

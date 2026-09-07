@@ -1,20 +1,24 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import JobPosting from "./Pages/jobPosting";
-import Home from "./Pages/home";
-import Jobs from "./Pages/Jobs";
-import About from "./Pages/about";
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { Navbar } from './components/NavBar';
+import { HomePage } from './pages/home';
+import { JobsPage } from './pages/jobs';
+import { JobPostingPage } from './pages/jobPosting';
+import { AboutPage } from './pages/about';
 
-export default function App() {
+function App() {
   return (
-    <>
-      <Router>
+    <Router>
+      <Navbar />
+      <main>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/JobPosting" element={<JobPosting />} />
-          <Route path="/Jobs" element={<Jobs />} />
-          <Route path="/About" element={<About />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/jobs" element={<JobsPage />} />
+          <Route path="/post-job" element={<JobPostingPage />} />
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
-      </Router>
-    </>
+      </main>
+    </Router>
   );
 }
+
+export default App;
